@@ -1,0 +1,14 @@
+.rounded-t.bg-white.mb-0.px-6.py-6
+  .text-center.flex.justify-between
+    h6.text-blueGray-700.text-xl.font-bold
+      |  Dashboard#index
+
+.flex-auto.px-4.lg:px-10.py-10.pt-0
+  p Find me in app/views/dashboard/index.html.slim
+  div[data-controller="hello"]
+  div[data-controller="popper"]
+    button#button.bg-blue-500.text-blue-100.px-3.py-2.rounded-xl[data-popper-target="element" data-action="mouseenter->popper#show mouseleave->popper#hide"]
+      |  Click me
+      #tooltip[role="tooltip" data-popper-target="tooltip"]
+        |  My tooltip
+        #arrow[data-popper-arrow]

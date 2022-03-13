@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title
+      | Varian
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+  body.text-slate-700.antialiased
+    #root
+      = render partial: "base/left_menu"
+      div.relative.md:ml-64.bg-blueGray-50
+        = render partial: "base/navbar"
+        = render partial: "base/header"
+        div.px-4.md:px-10.mx-auto.w-full.-m-24
+          div.flex.flex-wrap
+            div.w-full.px-4
+              div.relative.flex.flex-col.min-w-0.break-words.w-full.mb-6.shadow-lg.rounded-lg.bg-blueGray-100.border-0
+                = yield
+          = render partial: "base/footer"

@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+
+local: &local
+  <<: *default
+  host: <%= ENV.fetch("DB_HOST", "localhost") %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+
+development:
+  <<: *local
+  database: varian_development
+
+test:
+  <<: *local
+  database: varian_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
