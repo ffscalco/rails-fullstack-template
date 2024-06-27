@@ -5,7 +5,7 @@ class FeatureFlag
     end
 
     def rollout
-      @rollout ||= Rollout.new(Redis.current)
+      @rollout ||= Rollout.new(Redis.new)
     end
   end
 end

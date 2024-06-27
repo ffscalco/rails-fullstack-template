@@ -11,11 +11,11 @@ local: &local
 
 development:
   <<: *local
-  database: varian_development
+  database: project_name_development
 
 test:
   <<: *local
-  database: varian_test
+  database: project_name_test
 
 production:
   <<: *default
