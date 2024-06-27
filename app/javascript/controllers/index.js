@@ -4,7 +4,5 @@
 
 import { application } from "./application"
 
-import controllers from "./**/*_controller.js"
-controllers.forEach((controller) => {
-  application.register(controller.name, controller.module.default)
-})
+const context = require.context('controllers', true, /_controller\.js$/)
+application.load(definitionsFromContext(context))
