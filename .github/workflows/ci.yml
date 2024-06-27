@@ -70,10 +70,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      selenium:
-        image: selenium/standalone-chrome:latest
-        ports:
-          - 4444:4444
       postgres:
         image: postgres
         ports: ['5432:5432']

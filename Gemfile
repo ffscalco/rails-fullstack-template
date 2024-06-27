@@ -68,7 +68,6 @@ end
 group :test do
   gem "selenium-webdriver"
   gem "capybara"
-  gem "webdrivers"
   gem "fakeredis", require: "fakeredis/rspec"
   gem "simplecov", require: false
   gem "fuubar"
