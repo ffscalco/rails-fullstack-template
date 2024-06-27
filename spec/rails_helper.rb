@@ -20,6 +20,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include(FactoryBot::Syntax::Methods)
+  config.after do |example_group|
+    save_screenshot if example_group.exception && example_group.file_path.include?("spec/features")
+  end
 
   config.fuubar_progress_bar_options = {format: "%a |%b>>%i| %p%% %e (Tested: %c of %C)"}
 end

@@ -1,15 +1,22 @@
 Capybara.register_driver :chrome do |app|
+  browser_args = %w[allow-insecure-localhost ignore-certificate-errors disable-gpu window-size=1280,2000 no-sandbox]
+  browser_args << "headless" unless ENV["NO_HEADLESS_BROWSER"].present?
+
   options = Selenium::WebDriver::Chrome::Options.new
-  options.add_argument("--headless") unless ENV["NO_HEADLESS_BROWSER"].present?
-  options.add_argument("--allow-insecure-localhost")
-  options.add_argument("--ignore-certificate-errors")
-  options.add_argument("disable-gpu")
+  browser_args.each { |arg| options.add_argument(arg) }
 
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
-    capabilities: [options]
+    options: options
   )
 end
 
+Capybara.configure do |config|
+  config.default_max_wait_time = 10
+end
+
 Capybara.javascript_driver = :chrome
+Capybara.server_port = 5001
+Capybara.server = :puma, {Silent: true}
+Capybara.save_path = "#{Rails.root}/tmp/capybara"

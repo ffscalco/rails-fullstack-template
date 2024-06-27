@@ -1,4 +1,4 @@
-if ENV["coverage"] == "on"
+if ENV["COVERAGE"] == "on"
   require "simplecov"
 
   SimpleCov.start "rails" do
