@@ -7,6 +7,7 @@ This project is a [Rails](http://rubyonrails.org/) with tailwind css and esbuild
 To run this project you need to have:
 
 * Ruby 3.3.3 - You can use [RVM](http://rvm.io)
+* Node 20.11.1 - You can use [NVM](https://github.com/nvm-sh/nvm)
 * [PostgreSQL](http://www.postgresql.org/)
 * [Redis](https://redis.io/)
 
@@ -23,8 +24,8 @@ If everything goes OK, you can now run the project!
 
 ## Running the project
 
-1. `$ bin/dev` - Runs the js and css compilers
-2. `$ rails server` - Opens the server
+1. `$ bin/dev` - Runs the the rails server and compiles js and css
+1.1 Or `$ bin/assets` To compile only the js and css and run `$ rails server` in another terminal to run rails server outside foreman
 3. Open [http://localhost:3000](http://localhost:3000)
 
 ## Running specs and checking coverage
