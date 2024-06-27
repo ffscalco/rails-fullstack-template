@@ -1,5 +1,4 @@
 const plugin = require("tailwindcss/plugin");
-const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
@@ -12,7 +11,11 @@ module.exports = {
   ],
   theme: {
     colors: {
-      ...colors,
+      sky: require('tailwindcss/colors').sky,
+      stone: require('tailwindcss/colors').stone,
+      neutral: require('tailwindcss/colors').neutral,
+      gray: require('tailwindcss/colors').gray,
+      slate: require('tailwindcss/colors').slate,
     },
     extend: {
       minHeight: {
