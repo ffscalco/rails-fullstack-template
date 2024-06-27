@@ -29,11 +29,11 @@ If everything goes OK, you can now run the project!
 
 ## Running specs and checking coverage
 
-`$ bundle exec rspec` to run all the specs.
-`$ bundle exec rspec --tag ~@js` to run unit tests.
-`$ bundle exec rspec --tag @js` to run view tests.
-`$ NO_HEADLESS_BROWSER=on bundle exec rspec` to run specs viewing the browser
-`$ COVERAGE=on bundle exec rspec` to generate the coverage report then open the file `coverage/index.html` on your browser.
+* `$ bundle exec rspec` to run all the specs.
+* `$ bundle exec rspec --tag ~@js` to run unit tests.
+* `$ bundle exec rspec --tag @js` to run view tests.
+* `$ NO_HEADLESS_BROWSER=on bundle exec rspec` to run specs viewing the browser
+* `$ COVERAGE=on bundle exec rspec` to generate the coverage report then open the file `coverage/index.html` on your browser.
 
 ## Infrastructure
 
