@@ -1,7 +1,7 @@
 class FeatureFlag
   class << self
-    def active?(*args)
-      rollout.active?(*args)
+    def active?(*)
+      rollout.active?(*)
     end
 
     def rollout
