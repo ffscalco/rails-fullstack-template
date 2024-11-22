@@ -1,3 +1,6 @@
 detectors:
   IrresponsibleModule:
     enabled: false
+exclude_paths:
+  - db/migrate/20241122054045_create_active_storage_tables.active_storage.rb
+  - db/migrate/20241122054047_create_active_storage_variant_records.active_storage.rb
