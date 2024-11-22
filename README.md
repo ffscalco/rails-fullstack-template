@@ -1,6 +1,6 @@
 # Rails fullstack template
 
-This project is a [Rails](http://rubyonrails.org/) with tailwind css and esbuild to compile js
+This project is a [Rails](http://rubyonrails.org/) with ~~tailwind css and esbuild to compile js~~
 
 ## Dependencies
 
@@ -41,8 +41,7 @@ If everything goes OK, you can now run the project!
 
 You can:
 
-- `$ bin/dev` - Runs the the rails server and compiles js and css
-- Or `$ bin/assets` To compile only the js and css and run `$ rails server` in another terminal to run rails server outside foreman
+- `$ rails server` in terminal to run rails server
 - Open [http://localhost:3000](http://localhost:3000)
 
 ## Running specs and checking coverage
