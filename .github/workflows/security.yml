@@ -1,0 +1,20 @@
+name: Security Workflow
+
+on:
+  workflow_call:
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Ruby Environment
+      uses: ./.github/actions/setup-ruby
+
+    - name: Brakeman
+      run: bundle exec brakeman -6q --no-color
+
+    - name: Bundler audit
+      run: bundle exec bundler-audit check --update

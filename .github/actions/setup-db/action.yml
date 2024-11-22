@@ -1,0 +1,14 @@
+name: Setup DB Environment
+description: Reusable steps for setting up DB
+runs:
+  using: "composite"
+  steps:
+    - name: Copy config
+      shell: bash
+      run: |
+        cp .env.sample .env
+        cp config/database.sample.yml config/database.yml
+
+    - name: Setup database
+      shell: bash
+      run: bundle exec rails db:schema:load

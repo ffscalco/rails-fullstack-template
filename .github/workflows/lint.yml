@@ -1,0 +1,20 @@
+name: Lint Workflow
+
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Ruby Environment
+      uses: ./.github/actions/setup-ruby
+
+    - name: Standard
+      run: bundle exec standardrb
+
+    - name: Reek
+      run: bundle exec reek -c .reek.yml

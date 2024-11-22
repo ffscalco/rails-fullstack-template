@@ -1,0 +1,28 @@
+name: Setup Ruby Environment
+description: Reusable steps for setting up Ruby
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ env.RUBY_VERSION }}
+        bundler-cache: true
+
+    - name: Install bundler
+      shell: bash
+      run: gem install bundler
+
+    - name: Install dependencies
+      shell: bash
+      run: |
+        bundle config path vendor/bundle
+        bundle check || bundle install --force
+
+    - name: Set up cache
+      uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
