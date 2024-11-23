@@ -1,11 +1,12 @@
 # Rails fullstack template
 
-This project is a [Rails](http://rubyonrails.org/) with ~~tailwind css and esbuild to compile js~~
+This project is a [Rails](http://rubyonrails.org/) with tailwind css and esbuild to compile js
 
 ## Dependencies
 
 To run this project you need to have:
 
+* [asdf](https://asdf-vm.com/)
 * Ruby 3.3.6
 * Node 22.11.0
 * Yarn 1.22.22
@@ -14,6 +15,7 @@ To run this project you need to have:
 
 You can use [asdf](https://asdf-vm.com/) to install ruby, node, and yarn versions.
 Once you have it installed on your local, you can do the following:
+
 ```bash
 asdf plugin add ruby
 asdf plugin add nodejs
@@ -41,7 +43,8 @@ If everything goes OK, you can now run the project!
 
 You can:
 
-- `$ rails server` in terminal to run rails server
+- `$ bin/assets` To compile only the js and css
+- `$ rails server` in another terminal to run rails server
 - Open [http://localhost:3000](http://localhost:3000)
 
 ## Running specs and checking coverage
