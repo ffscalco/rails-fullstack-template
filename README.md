@@ -2,6 +2,8 @@
 
 This project is a [Rails](http://rubyonrails.org/) with tailwind css and esbuild to compile js
 
+![CI Workflow](https://github.com/ffscalco/rails-fullstack-template/actions/workflows/ci.yml/badge.svg)
+
 ## Dependencies
 
 To run this project you need to have:
