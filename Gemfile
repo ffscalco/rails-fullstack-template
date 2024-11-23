@@ -1,15 +1,16 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.3.3"
+ruby_version = File.read(".tool-versions").match(/^ruby\s+(\S+)/)[1]
+ruby ruby_version
 
 # System gems
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1"
+gem "rails", "~> 8"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma"
+gem "puma", ">= 5.0"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 gem "sentry-ruby"
@@ -21,9 +22,17 @@ gem "rollout"
 gem "rollout-ui"
 gem "slim-rails"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+gem "tzinfo-data", platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+
+# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+gem "solid_cache"
+gem "solid_queue"
+gem "solid_cable"
+
+# Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
+gem "thruster", require: false
 
 # front end
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -38,9 +47,6 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "font-awesome-rails"
 gem "loaf"
-
-# Needed until Ruby 3.3.4 is released https://github.com/ruby/ruby/pull/11006
-gem "net-pop", github: "ruby/net-pop"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -62,6 +68,7 @@ group :development do
   gem "bullet"
   gem "letter_opener"
   gem "reek"
+  gem "rubocop-rails-omakase", require: false
   gem "foreman"
 end
 

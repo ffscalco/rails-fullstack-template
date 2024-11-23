@@ -1,119 +1,16 @@
-name: CI
+name: CI Workflow
 
 on: [push]
 
 env:
-  RUBY_VERSION: 3.3.3
+  RUBY_VERSION: 3.3.6
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ env.RUBY_VERSION }}
-
-    - name: Install bundler
-      run: gem install bundler
-
-    - name: Set up cache
-      uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - name: Install dependencies
-      run: |
-        bundle config path vendor/bundle
-        bundle check || bundle install
-    - name: Standard
-      run: bundle exec standardrb
-    - name: Reek
-      run: bundle exec reek
+    uses: ./.github/workflows/lint.yml
 
   security:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    uses: ./.github/workflows/security.yml
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ env.RUBY_VERSION }}
-
-    - name: Install bundler
-      run: gem install bundler
-
-    - name: Set up cache
-      uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - name: Install dependencies
-      run: |
-        bundle config path vendor/bundle
-        bundle check || bundle install
-    - name: Brakeman
-      run: bundle exec brakeman -6q --no-color
-
-    - name: Bundler audit
-      run: bundle exec bundler-audit check --update
-
-  test:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        ports: ['5432:5432']
-        env:
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: imperius_test
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ env.RUBY_VERSION }}
-
-    - name: Copy config
-      run: |
-        cp .env.sample .env
-        cp config/database.sample.yml config/database.yml
-    - name: Install bundler
-      run: gem install bundler
-
-    - name: Set up cache
-      uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - name: Install dependencies
-      run: |
-        bundle config path vendor/bundle
-        bundle check || bundle install
-    - name: Rspec
-      env:
-        RAILS_ENV: test
-        DB_USERNAME: postgres
-        DB_PASSWORD: postgres
-      run: |
-        bundle exec rails db:create
-        bundle exec rails db:schema:load
-        bundle exec rspec
+  tests:
+    uses: ./.github/workflows/tests.yml

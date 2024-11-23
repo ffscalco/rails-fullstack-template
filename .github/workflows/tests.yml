@@ -1,0 +1,42 @@
+name: Tests Workflow
+
+on:
+  workflow_call:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: project_name_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      RAILS_ENV: test
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      CI: true
+    strategy:
+      matrix:
+        test_type: [unit, system]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Ruby Environment
+      uses: ./.github/actions/setup-ruby
+    - name: Setup DB Environment
+      uses: ./.github/actions/setup-db
+    - name: Run Rspec
+      run: |
+        if [ "${{ matrix.test_type }}" == "unit" ]; then
+          bundle exec rspec --tag ~@js
+        else
+          bundle exec rspec --tag @js
+        fi

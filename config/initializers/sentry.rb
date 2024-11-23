@@ -1,5 +1,5 @@
 Sentry.init do |config|
-  config.dsn = ENV.fetch("SENTRY_DSN")
+  config.dsn = ENV["SENTRY_DSN"]
   config.enabled_environments = %w[uat production]
   config.breadcrumbs_logger = [:active_support_logger, :http_logger]
 

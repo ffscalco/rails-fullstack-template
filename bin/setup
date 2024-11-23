@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 require "fileutils"
 
-# path to your application root.
 APP_ROOT = File.expand_path("..", __dir__)
 
 def system!(*args)
-  system(*args) || abort("\n== Command #{args} failed ==")
+  system(*args, exception: true)
 end
 
 FileUtils.chdir APP_ROOT do
@@ -21,6 +20,7 @@ FileUtils.chdir APP_ROOT do
   unless File.exist?("config/database.yml")
     FileUtils.cp "config/database.sample.yml", "config/database.yml"
   end
+
   unless File.exist?(".env")
     FileUtils.cp ".env.sample", ".env"
   end
@@ -31,9 +31,5 @@ FileUtils.chdir APP_ROOT do
   puts "\n== Removing old logs and tempfiles =="
   system! "bin/rails log:clear tmp:clear"
 
-  puts "\n== Install frontend dependencies =="
-  system! "yarn install"
-
-  puts "\n== Restarting application server =="
-  system! "bin/rails restart"
+  puts "\n== Setup is done! =="
 end

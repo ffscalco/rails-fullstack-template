@@ -6,10 +6,27 @@ This project is a [Rails](http://rubyonrails.org/) with tailwind css and esbuild
 
 To run this project you need to have:
 
-* Ruby 3.3.3 - You can use [RVM](http://rvm.io)
-* Node 20.11.1 - You can use [NVM](https://github.com/nvm-sh/nvm)
+* [asdf](https://asdf-vm.com/)
+* Ruby 3.3.6
+* Node 22.11.0
+* Yarn 1.22.22
 * [PostgreSQL](http://www.postgresql.org/)
 * [Redis](https://redis.io/)
+
+You can use [asdf](https://asdf-vm.com/) to install ruby, node, and yarn versions.
+Once you have it installed on your local, you can do the following:
+
+```bash
+asdf plugin add ruby
+asdf plugin add nodejs
+asdf plugin add yarn
+
+asdf install ruby 3.3.6
+asdf install nodejs 22.11.0
+asdf install yarn 1.22.22
+```
+
+Your local env will be loaded automatically using the versions in the `.tool-versions` file
 
 ## Setup the project
 
@@ -26,8 +43,8 @@ If everything goes OK, you can now run the project!
 
 You can:
 
-- `$ bin/dev` - Runs the the rails server and compiles js and css
-- Or `$ bin/assets` To compile only the js and css and run `$ rails server` in another terminal to run rails server outside foreman
+- `$ bin/assets` To compile only the js and css
+- `$ rails server` in another terminal to run rails server
 - Open [http://localhost:3000](http://localhost:3000)
 
 ## Running specs and checking coverage
