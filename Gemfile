@@ -69,6 +69,7 @@ group :development do
   gem "letter_opener"
   gem "reek"
   gem "rubocop-rails-omakase", require: false
+  gem "foreman"
 end
 
 group :test do
