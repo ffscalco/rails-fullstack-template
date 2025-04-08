@@ -18,11 +18,3 @@ runs:
       run: |
         bundle config path vendor/bundle
         bundle check || bundle install --force
-
-    - name: Set up cache
-      uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
