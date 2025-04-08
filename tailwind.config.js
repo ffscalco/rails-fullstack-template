@@ -1,21 +1,18 @@
 const plugin = require("tailwindcss/plugin");
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
-    './app/views/**/*.html.erb',
-    './app/views/**/*.html.slim',
-    './app/helpers/**/*.rb',
-    './app/assets/stylesheets/**/*.css',
-    './app/assets/stylesheets/**/*.scss',
-    './app/javascript/**/*.js'
+    "./app/views/**/*.html.erb",
+    "./app/views/**/*.html.slim",
+    "./app/helpers/**/*.rb",
+    "./app/assets/stylesheets/**/*.css",
+    "./app/assets/stylesheets/**/*.scss",
+    "./app/javascript/**/*.js",
   ],
   theme: {
     colors: {
-      sky: require('tailwindcss/colors').sky,
-      stone: require('tailwindcss/colors').stone,
-      neutral: require('tailwindcss/colors').neutral,
-      gray: require('tailwindcss/colors').gray,
-      slate: require('tailwindcss/colors').slate,
+      ...colors,
     },
     extend: {
       minHeight: {
