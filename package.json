@@ -1,6 +1,8 @@
 {
   "name": "app",
-  "private": "true",
+  "workspaces": [
+    "./"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@hotwired/stimulus": "^3.2.2",
@@ -8,7 +10,7 @@
     "@popperjs/core": "^2.11.2",
     "@tailwindcss/forms": "^0.4.0",
     "autoprefixer": "^10.4.19",
-    "esbuild": "^0.21.5",
+    "esbuild": "^0.25.11",
     "esbuild-rails": "^1.0.7",
     "postcss": "^8.4.38",
     "postcss-cli": "^8.3.1",
@@ -19,5 +21,6 @@
   "scripts": {
     "build": "node esbuild.config.js",
     "build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
-  }
+  },
+  "packageManager": "yarn@4.10.3"
 }
