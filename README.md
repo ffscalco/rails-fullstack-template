@@ -9,9 +9,9 @@ This project is a [Rails](http://rubyonrails.org/) with tailwind css and esbuild
 To run this project you need to have:
 
 * [asdf](https://asdf-vm.com/)
-* Ruby 3.3.6
-* Node 22.11.0
-* Yarn 1.22.22
+* Ruby 3.4.7
+* Node 24.10.0
+* Yarn 4.10.3
 * [PostgreSQL](http://www.postgresql.org/)
 * [Redis](https://redis.io/)
 
@@ -21,11 +21,9 @@ Once you have it installed on your local, you can do the following:
 ```bash
 asdf plugin add ruby
 asdf plugin add nodejs
-asdf plugin add yarn
 
-asdf install ruby 3.3.6
-asdf install nodejs 22.11.0
-asdf install yarn 1.22.22
+asdf install ruby 3.4.7
+asdf install nodejs 24.10.0
 ```
 
 Your local env will be loaded automatically using the versions in the `.tool-versions` file
