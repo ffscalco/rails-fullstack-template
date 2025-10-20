@@ -1,8 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss";
 
-@import '@fortawesome/fontawesome-free';
+@import "@fortawesome/fontawesome-free";
 
 @import "./theme/tailwind.css";
 @import "./components/tooltip.css";
