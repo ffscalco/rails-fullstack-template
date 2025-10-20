@@ -18,8 +18,6 @@ gem "sentry-rails"
 gem "strong_migrations"
 gem "pagy"
 gem "mailgun-ruby"
-gem "rollout"
-gem "rollout-ui"
 gem "slim-rails"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[windows jruby]
@@ -48,6 +46,11 @@ gem "stimulus-rails"
 gem "font-awesome-rails"
 gem "loaf"
 
+# Feature flags
+gem "flipper"
+gem "flipper-redis"
+gem "flipper-ui"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -70,6 +73,7 @@ group :development do
   gem "reek"
   gem "rubocop-rails-omakase", require: false
   gem "foreman"
+  gem "solargraph"
 end
 
 group :test do
