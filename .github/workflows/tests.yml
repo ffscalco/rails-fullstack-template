@@ -33,6 +33,13 @@ jobs:
       uses: ./.github/actions/setup-ruby
     - name: Setup DB Environment
       uses: ./.github/actions/setup-db
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+
+    - name: Enable Corepack
+      run: corepack enable
     - name: Precompile Assets
       if: matrix.test_type == 'system'
       run: bundle exec rails assets:precompile
