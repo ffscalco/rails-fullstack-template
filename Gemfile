@@ -8,11 +8,11 @@ ruby ruby_version
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8"
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem "pg"
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
+gem "puma"
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
+gem "redis"
 gem "sentry-ruby"
 gem "sentry-rails"
 gem "strong_migrations"
@@ -45,6 +45,11 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "font-awesome-rails"
 gem "loaf"
+# Components for views
+gem "view_component"
+
+# user management
+gem "action_policy"
 
 # Feature flags
 gem "flipper"
@@ -62,7 +67,8 @@ group :development, :test do
   gem "brakeman", require: false
   gem "bundle-audit", require: false
   gem "better_errors"
-  gem "binding_of_caller"
+  gem "ruby-lsp"
+  gem "ruby-lsp-rails"
 end
 
 group :development do
@@ -73,7 +79,6 @@ group :development do
   gem "reek"
   gem "rubocop-rails-omakase", require: false
   gem "foreman"
-  gem "solargraph"
 end
 
 group :test do
