@@ -1,22 +1,38 @@
 const path = require("path");
-const rails = require("esbuild-rails");
 const esbuild = require("esbuild");
 
-(async () => {
+const watch = process.argv.includes("--watch");
+const minify = !watch;
+
+async function build() {
   const ctx = await esbuild.context({
     entryPoints: ["application.js"],
     bundle: true,
+    minify,
+    sourcemap: true,
     outdir: path.join(process.cwd(), "app/assets/builds"),
     absWorkingDir: path.join(process.cwd(), "app/javascript"),
-    plugins: [rails()],
+    publicPath: "/assets",
+    loader: {
+      ".js": "jsx",
+      ".png": "file",
+      ".jpg": "file",
+      ".svg": "file",
+      ".css": "css",
+    },
   });
 
-  if (process.argv.includes("--watch")) {
-    await ctx.watch(); // Enable watch mode
-    console.log("Watching for changes...");
+  if (watch) {
+    await ctx.watch();
+    console.log("👀 Watching for changes...");
   } else {
-    await ctx.rebuild(); // Perform a single build
-    console.log("Build completed.");
-    ctx.dispose(); // Dispose of the context if not watching
+    await ctx.rebuild();
+    console.log("✅ Build completed.");
+    await ctx.dispose();
   }
-})();
+}
+
+build().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

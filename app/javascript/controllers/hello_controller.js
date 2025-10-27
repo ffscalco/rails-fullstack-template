@@ -1,7 +1,9 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
-    this.element.textContent = "Hello World! it's working yaay"
+    const text = "Hello World! it's working yaay";
+    console.log(text);
+    this.element.textContent = text;
   }
 }

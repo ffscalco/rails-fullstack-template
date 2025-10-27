@@ -33,10 +33,8 @@ gem "solid_cable"
 gem "thruster", require: false
 
 # front end
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
-# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
+# The asset pipeline for Rails [https://github.com/rails/propshaft]
+gem "propshaft"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
