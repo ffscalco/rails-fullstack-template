@@ -1,15 +1,19 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 import { createPopper } from "@popperjs/core";
 
 export default class extends Controller {
   toogle(event) {
-    let element = event.currentTarget;
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dropdown = element.nextSibling;
+    const dropdownPlacement =
+      dropdown.getAttribute("data-popper-placement") || "bottom-start";
 
-    createPopper(element, document.getElementById(event.params.target), {
-      placement: "bottom-start",
+    createPopper(element, dropdown, {
+      placement: dropdownPlacement,
     });
 
-    document.getElementById(event.params.target).classList.toggle("hidden");
-    document.getElementById(event.params.target).classList.toggle("block");
+    dropdown.classList.toggle("hidden");
+    dropdown.classList.toggle("block");
   }
 }
