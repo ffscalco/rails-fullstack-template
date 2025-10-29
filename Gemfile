@@ -75,7 +75,6 @@ group :development do
   gem "bullet"
   gem "letter_opener"
   gem "reek"
-  gem "rubocop-rails-omakase", require: false
   gem "foreman"
 end
 
