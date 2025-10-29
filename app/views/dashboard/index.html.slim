@@ -5,6 +5,55 @@
 
 .flex-auto.px-4.lg:px-10.py-10.pt-0
   p Find me in app/views/dashboard/index.html.slim
+
+  .bg-neutral-50.shadow-md.rounded.px-8.pt-6.pb-8.mb-4.mt-6
+    h3.text-slate-700.text-lg.font-bold.mb-4 MainFormBuilder Demo
+
+    = form_with url: "#", builder: MainFormBuilder, local: true do |f|
+      .mb-4
+        = f.label :name, "Name"
+        = f.text_field :name, placeholder: "Enter your name"
+
+      .mb-4
+        = f.label :email, "Email"
+        = f.email_field :email, placeholder: "Enter your email"
+
+      .mb-4
+        = f.label :password, "Password"
+        = f.password_field :password, placeholder: "Enter your password"
+
+      .mb-4
+        = f.label :birth_date, "Birth Date"
+        = f.date_field :birth_date
+
+      .mb-4
+        = f.label :country, "Country"
+        = f.select :country, [["United States", "US"], ["Canada", "CA"], ["United Kingdom", "UK"], ["Australia", "AU"]], { prompt: "Select a country" }
+
+      .mb-4
+        = f.label :bio, "Biography"
+        = f.textarea :bio, placeholder: "Tell us about yourself...", rows: 4
+
+      .mb-4
+        = f.label :avatar, "Avatar"
+        = f.file_field :avatar
+
+      .mb-4
+        = f.label :gender, "Gender", for: nil
+        .flex.space-x-2
+          = f.radio_button_with_label :gender, "male", label: "Male"
+          = f.radio_button_with_label :gender, "female", label: "Female"
+          = f.radio_button_with_label :gender, "other", label: "Other"
+
+      .mb-4
+        = f.label :preferences, "Preferences", for: nil
+        .flex.space-x-2
+          = f.check_box_with_label :newsletter, label: "Subscribe to newsletter"
+          = f.check_box_with_label :terms, label: "I agree to terms and conditions"
+
+      .mb-6
+        = f.submit "Submit Form"
+
   div[data-controller="hello"]
   div[data-controller="popper"]
     button#button.bg-blue-500.text-blue-100.px-3.py-2.rounded-xl[data-popper-target="element" data-action="mouseenter->popper#show mouseleave->popper#hide"]
@@ -12,3 +61,4 @@
       #tooltip[role="tooltip" data-popper-target="tooltip"]
         |  My tooltip
         #arrow[data-popper-arrow]
+
