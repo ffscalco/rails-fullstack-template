@@ -1,0 +1,9 @@
+.text-white.text-sm.hidden.md:flex.md:flex-row.md:items-center
+  - breadcrumb_trail.each_with_index do |crumb, index|
+    - unless index.zero?
+      = helpers.fa_icon "chevron-right", class: "mx-1 md:mx-2 text-xs"
+    - if crumb.current?
+      span.uppercase.font-bold.text-xs.md:text-sm
+        = crumb.name
+    - else
+      = link_to crumb.name, crumb.url, class: "uppercase hover:underline text-xs md:text-sm"

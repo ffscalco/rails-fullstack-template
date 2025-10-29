@@ -1,9 +1,0 @@
-.text-white.text-sm
-  - breadcrumb_trail.each_with_index do |crumb, index|
-    - unless index.zero?
-      = fa_icon "chevron-right", class: "mx-2"
-    - if crumb.current?
-      a.uppercase.lg:inline-block.font-bold
-        = crumb.name
-    - else
-      = link_to crumb.name, crumb.url, class: "uppercase lg:inline-block"

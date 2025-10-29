@@ -10,9 +10,9 @@ html
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   body.text-slate-700.antialiased
     #root
-      = render partial: "base/left_menu"
+      = render LeftMenu::Component.new
       div.relative.md:ml-64.bg-slate-50
-        = render partial: "base/navbar"
+        = render Navbar::Component.new(breadcrumb_trail: breadcrumb_trail)
         .relative.bg-indigo-600.md:pt-32.pb-32.pt-12
           .px-4.md:px-10.mx-auto.w-full
             = yield :page_header
@@ -21,4 +21,4 @@ html
             div.w-full.px-4
               div.relative.flex.flex-col.min-w-0.break-words.w-full.mb-6.shadow-lg.rounded-lg.bg-slate-100.border-0.bg-white
                 = yield
-          = render partial: "base/footer"
+          = render Footer::Component.new
