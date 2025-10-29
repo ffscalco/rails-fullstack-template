@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "dashboard#index"
+  resources :dashboard, only: [:index]
 
   mount(
     Flipper::UI.app do |builder|

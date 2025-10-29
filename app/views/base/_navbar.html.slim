@@ -1,7 +1,6 @@
 nav.absolute.top-0.left-0.w-full.z-10.bg-transparent.md:flex-row.md:flex-nowrap.md:justify-start.flex.items-center.p-4
   .w-full.mx-autp.items-center.flex.justify-between.md:flex-nowrap.flex-wrap.md:px-10.px-4[data-controller="dropdown"]
-    a.text-white.text-sm.uppercase.hidden.lg:inline-block.font-semibold[href="./index.html"]
-      | Dashboard
+    = render "base/breadcrumbs"
     form.md:flex.hidden.flex-row.flex-wrap.items-center.lg:ml-auto.mr-3
       .relative.flex.w-full.flex-wrap.items-stretch
         span.z-10.h-full.leading-snug.font-normal.absolute.text-center.text-slate-300.absolute.bg-transparent.rounded.text-base.items-center.justify-center.w-8.pl-3.py-3
