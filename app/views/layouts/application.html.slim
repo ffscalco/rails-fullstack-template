@@ -13,7 +13,9 @@ html
       = render partial: "base/left_menu"
       div.relative.md:ml-64.bg-slate-50
         = render partial: "base/navbar"
-        = render partial: "base/header"
+        .relative.bg-indigo-600.md:pt-32.pb-32.pt-12
+          .px-4.md:px-10.mx-auto.w-full
+            = yield :page_header
         div.px-4.md:px-10.mx-auto.w-full.-m-24
           div.flex.flex-wrap
             div.w-full.px-4
