@@ -6,15 +6,5 @@ runs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: ${{ env.RUBY_VERSION }}
+        ruby-version-file: .tool-versions
         bundler-cache: true
-
-    - name: Install bundler
-      shell: bash
-      run: gem install bundler
-
-    - name: Install dependencies
-      shell: bash
-      run: |
-        bundle config path vendor/bundle
-        bundle check || bundle install --force
