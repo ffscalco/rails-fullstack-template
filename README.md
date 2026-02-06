@@ -47,13 +47,13 @@ You can:
 - `$ rails server` in another terminal to run rails server
 - Open [http://localhost:3000](http://localhost:3000)
 
-## Running specs and checking coverage
+## Running tests and checking coverage
 
-* `$ bundle exec rspec` to run all the specs.
-* `$ bundle exec rspec --tag ~@js` to run unit tests.
-* `$ bundle exec rspec --tag @js` to run view tests.
-* `$ NO_HEADLESS_BROWSER=on bundle exec rspec` to run specs viewing the browser
-* `$ COVERAGE=on bundle exec rspec` to generate the coverage report then open the file `coverage/index.html` on your browser.
+* `$ bin/rails test` to run unit/integration tests.
+* `$ bin/rails test:system` to run system (browser) tests.
+* `$ bin/rails test:all` to run all tests.
+* `$ NO_HEADLESS_BROWSER=on bin/rails test:system` to run system tests viewing the browser.
+* `$ COVERAGE=on bin/rails test:all` to generate the coverage report then open the file `coverage/index.html` on your browser.
 
 ## Infrastructure
 
