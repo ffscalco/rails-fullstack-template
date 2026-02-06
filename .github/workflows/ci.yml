@@ -2,6 +2,9 @@ name: CI Workflow
 
 on: [push]
 
+env:
+  RUBY_VERSION: 4.0.1
+
 jobs:
   lint:
     uses: ./.github/workflows/lint.yml
