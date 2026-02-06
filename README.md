@@ -9,7 +9,7 @@ This project is a [Rails](http://rubyonrails.org/) with tailwind css and esbuild
 To run this project you need to have:
 
 * [asdf](https://asdf-vm.com/)
-* Ruby 3.4.7
+* Ruby 4.0.1
 * Node 24.10.0
 * Yarn 4.10.3
 * [PostgreSQL](http://www.postgresql.org/)
@@ -22,7 +22,7 @@ Once you have it installed on your local, you can do the following:
 asdf plugin add ruby
 asdf plugin add nodejs
 
-asdf install ruby 3.4.7
+asdf install ruby 4.0.1
 asdf install nodejs 24.10.0
 ```
 
