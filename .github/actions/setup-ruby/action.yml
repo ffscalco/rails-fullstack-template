@@ -3,8 +3,13 @@ description: Reusable steps for setting up Ruby
 runs:
   using: "composite"
   steps:
+    - name: Get Ruby version from .tool-versions
+      id: ruby_version
+      run: echo "ruby_version=$(awk '/^ruby/ {print $2}' .tool-versions)" >> $GITHUB_OUTPUT
+      shell: bash
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version-file: .tool-versions
+        ruby-version: ${{ steps.ruby_version.outputs.ruby_version }}
         bundler-cache: true
