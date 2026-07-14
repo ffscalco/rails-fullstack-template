@@ -10,13 +10,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v5
 
+    - name: Enable Corepack
+      run: corepack enable
+
     - name: Setup Node.js
       uses: actions/setup-node@v5
       with:
         node-version: '24'
-
-    - name: Enable Corepack
-      run: corepack enable
 
     - name: Setup Ruby Environment
       uses: ./.github/actions/setup-ruby
