@@ -11,4 +11,4 @@ runs:
 
     - name: Setup database
       shell: bash
-      run: bundle exec rails db:schema:load
+      run: bundle exec rails db:prepare
