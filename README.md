@@ -9,9 +9,9 @@ This project is a [Rails](http://rubyonrails.org/) with tailwind css and esbuild
 To run this project you need to have:
 
 * [asdf](https://asdf-vm.com/)
-* Ruby 4.0.1
-* Node 24.10.0
-* Yarn 4.10.3
+* Ruby 4.0.5
+* Node 24.18.0
+* Yarn 4.17.1
 * [PostgreSQL](http://www.postgresql.org/)
 
 Background jobs, caching, and Action Cable are all database-backed via the
@@ -24,8 +24,8 @@ Once you have it installed on your local, you can do the following:
 asdf plugin add ruby
 asdf plugin add nodejs
 
-asdf install ruby 4.0.1
-asdf install nodejs 24.10.0
+asdf install ruby 4.0.5
+asdf install nodejs 24.18.0
 ```
 
 Your local env will be loaded automatically using the versions in the `.tool-versions` file
@@ -47,6 +47,11 @@ You can:
 
 - `$ bin/assets` To compile only the js and css
 - `$ rails server` in another terminal to run rails server
+
+Or:
+
+- `$ bin/dev` To compile the js and css, start the jobs and the server
+
 - Open [http://localhost:3000](http://localhost:3000)
 
 ## Running tests and checking coverage
