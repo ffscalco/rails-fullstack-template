@@ -19,6 +19,9 @@ jobs:
         node-version: '24'
         package-manager-cache: false
 
+    - name: Install JS dependencies
+      run: yarn install --immutable
+
     - name: Setup Ruby Environment
       uses: ./.github/actions/setup-ruby
 

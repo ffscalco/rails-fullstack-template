@@ -42,6 +42,9 @@ jobs:
         node-version: '24'
         package-manager-cache: false
 
+    - name: Install JS dependencies
+      if: matrix.test_type == 'system'
+      run: yarn install --immutable
     - name: Precompile Assets
       if: matrix.test_type == 'system'
       run: bundle exec rails assets:precompile
