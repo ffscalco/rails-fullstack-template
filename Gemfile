@@ -77,4 +77,5 @@ group :test do
   gem "capybara"
   gem "cuprite"
   gem "simplecov", require: false
+  gem "minitest-retry"
 end
