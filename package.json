@@ -13,7 +13,8 @@
     "tailwindcss": "^4.0.0"
   },
   "scripts": {
-    "build": "node esbuild.config.js",
+    "build": "yarn build:js && yarn build:css",
+    "build:js": "node esbuild.config.js",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css"
   },
   "packageManager": "yarn@4.10.3"
