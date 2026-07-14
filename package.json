@@ -9,7 +9,7 @@
     "@hotwired/turbo-rails": "^8.0.23",
     "@popperjs/core": "^2.11.2",
     "@tailwindcss/cli": "^4.3.2",
-    "esbuild": "^0.25.11",
+    "esbuild": "^0.28.1",
     "tailwindcss": "^4.3.2"
   },
   "scripts": {
