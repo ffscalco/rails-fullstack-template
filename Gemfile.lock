@@ -188,8 +188,6 @@ GEM
       rack-protection (>= 1.5.3, < 5.0.0)
       rack-session (>= 1.0.2, < 3.0.0)
       sanitize (< 8)
-    font-awesome-rails (4.7.0.9)
-      railties (>= 3.2, < 9.0)
     foreman (0.90.0)
       thor (~> 1.4)
     fugit (1.12.1)
@@ -490,7 +488,6 @@ DEPENDENCIES
   flipper
   flipper-active_record
   flipper-ui
-  font-awesome-rails
   foreman
   jsbundling-rails
   letter_opener

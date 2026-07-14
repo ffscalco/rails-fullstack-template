@@ -37,7 +37,6 @@ gem "jsbundling-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-gem "font-awesome-rails"
 gem "loaf"
 # Components for views
 gem "view_component"

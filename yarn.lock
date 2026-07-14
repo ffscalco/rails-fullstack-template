@@ -215,10 +215,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-free@npm:^5.15.4":
-  version: 5.15.4
-  resolution: "@fortawesome/fontawesome-free@npm:5.15.4"
-  checksum: 10c0/0a12f11b17b3073475df965d423ac485715e281d11ecde17250fab5dc0a177fb29ced59242f6c024bef59429c502ba8fe831ed9500e14713cc30138e70df8fbc
+"@fortawesome/fontawesome-free@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "@fortawesome/fontawesome-free@npm:7.3.0"
+  checksum: 10c0/f7f401e4736fcff1ace455f83d16b3c5fe97f3daaa8ca48710649dbae7b6aeaee5f2fda6a66e4675475e68b1241541638c5ca0ad65ca148a69df8bd5cdb229c3
   languageName: node
   linkType: hard
 
@@ -736,7 +736,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "app@workspace:."
   dependencies:
-    "@fortawesome/fontawesome-free": "npm:^5.15.4"
+    "@fortawesome/fontawesome-free": "npm:^7.3.0"
     "@hotwired/stimulus": "npm:^3.2.2"
     "@hotwired/turbo-rails": "npm:^8.0.4"
     "@popperjs/core": "npm:^2.11.2"
