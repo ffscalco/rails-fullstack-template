@@ -22,19 +22,20 @@ jobs:
       RAILS_ENV: test
       DB_USERNAME: postgres
       DB_PASSWORD: postgres
+      COVERAGE: on
       CI: true
     strategy:
       matrix:
         test_type: [unit, system]
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     - name: Setup Ruby Environment
       uses: ./.github/actions/setup-ruby
     - name: Setup DB Environment
       uses: ./.github/actions/setup-db
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
         node-version: '24'
 
@@ -48,5 +49,52 @@ jobs:
         if [ "${{ matrix.test_type }}" == "unit" ]; then
           bin/rails test
         else
-          bin/rails test:system
+          # Cap system-test parallelism on the small runner: each Rails test
+          # worker launches its own headless Chrome at suite start, and
+          # launching one per CPU simultaneously can blow Ferrum's 30s
+          # process-launch timeout under CPU contention. PARALLEL_WORKERS
+          # overrides the default :number_of_processors worker count.
+          PARALLEL_WORKERS=2 bin/rails test:system
         fi
+    - name: Upload Coverage Results
+      if: always()
+      uses: actions/upload-artifact@v5
+      with:
+        name: coverage-${{ matrix.test_type }}
+        path: coverage/.resultset.json
+        include-hidden-files: true
+        retention-days: 1
+
+  coverage:
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+    - name: Setup Ruby Environment
+      uses: ./.github/actions/setup-ruby
+
+    - name: Download Coverage Results
+      uses: actions/download-artifact@v5
+      with:
+        pattern: coverage-*
+        path: coverage/parts
+
+    - name: Merge and Check Coverage
+      run: |
+        bundle exec ruby -e "
+          require 'simplecov'
+
+          SimpleCov.collate Dir['coverage/parts/**/.resultset.json'], 'rails' do
+            minimum_coverage 80
+          end
+
+          coverage = JSON.parse(File.read('coverage/.last_run.json'))['result']['line']
+          puts \"Test Coverage: #{coverage.round(2)}%\"
+          if coverage < 80
+            puts '❌ Coverage is below 80% threshold'
+            exit 1
+          else
+            puts '✅ Coverage meets 80% threshold'
+          end
+        "

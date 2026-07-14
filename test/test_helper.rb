@@ -2,7 +2,7 @@ if ENV["COVERAGE"] == "on"
   require "simplecov"
 
   SimpleCov.start "rails" do
-    minimum_coverage 30
+    enable_coverage :branch
   end
 end
 
@@ -21,5 +21,14 @@ module ActiveSupport
     fixtures :all
 
     parallelize(workers: :number_of_processors)
+
+    # Support for SimpleCov with parallel test workers
+    parallelize_setup do |worker|
+      SimpleCov.command_name "#{SimpleCov.command_name}-#{worker}" if ENV["COVERAGE"] == "on"
+    end
+
+    parallelize_teardown do |worker|
+      SimpleCov.result if ENV["COVERAGE"] == "on"
+    end
   end
 end
