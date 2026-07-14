@@ -8,8 +8,6 @@ gem "rails", "~> 8"
 gem "pg"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma"
-# Use Redis adapter to run Action Cable in production
-gem "redis"
 gem "sentry-ruby"
 gem "sentry-rails"
 gem "strong_migrations"
@@ -49,7 +47,7 @@ gem "action_policy"
 
 # Feature flags
 gem "flipper"
-gem "flipper-redis"
+gem "flipper-active_record"
 gem "flipper-ui"
 
 group :development, :test do
@@ -78,6 +76,5 @@ end
 group :test do
   gem "capybara"
   gem "cuprite"
-  gem "fakeredis"
   gem "simplecov", require: false
 end

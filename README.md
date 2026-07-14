@@ -13,7 +13,9 @@ To run this project you need to have:
 * Node 24.10.0
 * Yarn 4.10.3
 * [PostgreSQL](http://www.postgresql.org/)
-* [Redis](https://redis.io/)
+
+Background jobs, caching, and Action Cable are all database-backed via the
+Rails Solid stack (Solid Queue, Solid Cache, Solid Cable) — no Redis required.
 
 You can use [asdf](https://asdf-vm.com/) to install ruby, node, and yarn versions.
 Once you have it installed on your local, you can do the following:

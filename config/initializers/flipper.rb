@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
-# Configure Flipper with Redis adapter
+# Configure Flipper with the ActiveRecord adapter (backed by the primary database)
 require "flipper"
-require "flipper/adapters/redis"
-
-redis_url = ENV.fetch("REDIS_FOR_CACHE_URL", "redis://localhost:6379/1")
-redis = Redis.new(url: redis_url)
-redis_adapter = Flipper::Adapters::Redis.new(redis)
+require "flipper/adapters/active_record"
 
 Flipper.configure do |config|
   config.default do
-    Flipper.new(redis_adapter)
+    Flipper.new(Flipper::Adapters::ActiveRecord.new)
   end
 end

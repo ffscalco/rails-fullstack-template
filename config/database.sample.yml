@@ -10,13 +10,52 @@ local: &local
   password: <%= ENV["DB_PASSWORD"] %>
 
 development:
-  <<: *local
-  database: project_name_development
+  primary:
+    <<: *local
+    database: project_name_development
+  queue:
+    <<: *local
+    database: project_name_development_queue
+    migrations_paths: db/queue_migrate
+  cache:
+    <<: *local
+    database: project_name_development_cache
+    migrations_paths: db/cache_migrate
+  cable:
+    <<: *local
+    database: project_name_development_cable
+    migrations_paths: db/cable_migrate
 
 test:
-  <<: *local
-  database: project_name_test
+  primary:
+    <<: *local
+    database: project_name_test
+  queue:
+    <<: *local
+    database: project_name_test_queue
+    migrations_paths: db/queue_migrate
+  cache:
+    <<: *local
+    database: project_name_test_cache
+    migrations_paths: db/cache_migrate
+  cable:
+    <<: *local
+    database: project_name_test_cable
+    migrations_paths: db/cable_migrate
 
 production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  primary:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+  queue:
+    <<: *default
+    url: <%= ENV['QUEUE_DATABASE_URL'] %>
+    migrations_paths: db/queue_migrate
+  cache:
+    <<: *default
+    url: <%= ENV['CACHE_DATABASE_URL'] %>
+    migrations_paths: db/cache_migrate
+  cable:
+    <<: *default
+    url: <%= ENV['CABLE_DATABASE_URL'] %>
+    migrations_paths: db/cable_migrate

@@ -9,7 +9,6 @@ end
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
-require "fakeredis"
 
 # Rails by default logs everything that is happening in your test environment to "log/test.log".
 # By increasing the logger level, you will be able to reduce the IO during your tests.
