@@ -59,7 +59,7 @@ jobs:
         fi
     - name: Upload Coverage Results
       if: always()
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: coverage-${{ matrix.test_type }}
         path: coverage/.resultset.json
@@ -76,7 +76,7 @@ jobs:
       uses: ./.github/actions/setup-ruby
 
     - name: Download Coverage Results
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v7
       with:
         pattern: coverage-*
         path: coverage/parts
