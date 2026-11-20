@@ -29,7 +29,7 @@ jobs:
         test_type: [unit, system]
     steps:
     - name: Checkout code
-      uses: actions/checkout@v5
+      uses: actions/checkout@v7
     - name: Setup Ruby Environment
       uses: ./.github/actions/setup-ruby
     - name: Setup DB Environment
@@ -37,7 +37,7 @@ jobs:
     - name: Enable Corepack
       run: corepack enable
     - name: Setup Node.js
-      uses: actions/setup-node@v5
+      uses: actions/setup-node@v7
       with:
         node-version: '24'
         package-manager-cache: false
@@ -62,7 +62,7 @@ jobs:
         fi
     - name: Upload Coverage Results
       if: always()
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: coverage-${{ matrix.test_type }}
         path: coverage/.resultset.json
@@ -74,12 +74,12 @@ jobs:
     needs: tests
     steps:
     - name: Checkout code
-      uses: actions/checkout@v5
+      uses: actions/checkout@v7
     - name: Setup Ruby Environment
       uses: ./.github/actions/setup-ruby
 
     - name: Download Coverage Results
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         pattern: coverage-*
         path: coverage/parts
