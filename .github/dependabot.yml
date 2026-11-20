@@ -1,0 +1,29 @@
+version: 2
+updates:
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    groups:
+      bundler-minor-patch:
+        update-types: ["minor", "patch"]
+
+  - package-ecosystem: npm        # also covers Yarn
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    groups:
+      npm-minor-patch:
+        update-types: ["minor", "patch"]
+
+  - package-ecosystem: github-actions
+    directories:
+      - "/"
+      - "/.github/actions/*"      # your local actions
+    schedule:
+      interval: daily
+    groups:
+      actions:
+        patterns: ["*"]
